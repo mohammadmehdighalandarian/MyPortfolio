@@ -20,12 +20,36 @@ namespace MyPortfolio.Controllers
 
         public IActionResult ContactUs()
         {
-            return View();
+            Userticket userticket=new Userticket();
+            return View(userticket);
         }
-        public IActionResult Privacy()
+        [HttpPost]
+        //public IActionResult ContactUs(IFormCollection form)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View();
+        //    }
+
+        //       var Name=form["name"];
+        //       return Json(Ok());
+        //}
+
+        public IActionResult ContactUs(Userticket userticket)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Error = "اطلاعات وارد شده صحیح نیست لطفا دوباره تلاش کنید!!!";
+                return View(userticket);
+            }
+
+            ViewBag.Succes = "پیام شما با موفقیت ثبت شد ";
+            ModelState.Clear();
+
+
             return View();
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
