@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyPortfolio.Models;
 using System.Diagnostics;
+using MyPortfolio.Data;
 
 namespace MyPortfolio.Controllers
 {
@@ -50,7 +51,11 @@ namespace MyPortfolio.Controllers
             return View();
         }
 
-
+        public IActionResult ProjectDetail(int id)
+        {
+            var project = ProjectData.GetProjectBy(id);
+            return View(project);
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

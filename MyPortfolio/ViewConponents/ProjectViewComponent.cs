@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyPortfolio.Data;
 using MyPortfolio.Models;
 
 namespace MyPortfolio.ViewConponents
@@ -8,13 +9,7 @@ namespace MyPortfolio.ViewConponents
         
         public IViewComponentResult Invoke()
         {
-            var project = new List<Project>()
-            {
-                new Project(1,"MyFirstShop","","Me","project-1.jpg"),
-                new Project(2,"MyFirstShop","","Me","project-2.jpg"),
-                new Project(3,"MyFirstShop","","Me","project-3.jpg"),
-                new Project(4,"MyFirstShop","","Me","project-4.jpg")
-            };
+            var project = ProjectData.GetAllProjects();
             return View("_Project", project);
         }
     }
